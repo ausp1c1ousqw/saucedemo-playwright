@@ -9,6 +9,7 @@ class ProductsPage extends BasePage {
       productName: this.page.getByTestId("inventory-item-name"),
       productPrice: this.page.getByTestId("inventory-item-price"),
       sortDropdown: this.page.getByTestId("product-sort-container"),
+      activeSortOption: this.page.getByTestId("active-option"),
       addToCartButton: (productId) => this.page.getByTestId(`add-to-cart-${productId}`),
       removeButton: (productId) => this.page.getByTestId(`remove-${productId}`),
     };
@@ -31,6 +32,10 @@ class ProductsPage extends BasePage {
     return new BaseLocator(this.locators.productPrice, "Cart Product Price", "Locator");
   }
 
+  get activeSortOption() {
+    return new Label(this.locators.activeSortOption, "Active Sort Option");
+  }
+
   getAddToCartButtonFor(productId) {
     return new Button(
       this.locators.addToCartButton(productId),
@@ -40,6 +45,19 @@ class ProductsPage extends BasePage {
 
   getRemoveButtonFor(productId) {
     return new Button(this.locators.removeButton(productId), `Remove Button on ${productId}`);
+  }
+
+  async selectSort(sortOption) {
+    await this.sortDropdown.selectOption(sortOption?.value ?? sortOption);
+  }
+
+  async getProductNames() {
+    return await this.productName.allTextContents();
+  }
+
+  async getProductPrices() {
+    const prices = await this.productPrice.allTextContents();
+    return prices.map((p) => parseFloat(p.replace(/[^0-9.]/g, "")));
   }
 
   async clickAddToCartButtonFor(productId) {

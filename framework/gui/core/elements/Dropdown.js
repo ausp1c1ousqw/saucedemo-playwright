@@ -6,7 +6,7 @@ class Dropdown extends BaseLocator {
   }
 
   async selectOption(option) {
-    this._log(`Selecting option: ${option}`);
+    this._log(`Selecting option: "${option}"`);
     await this._locator.selectOption(option);
   }
 }

@@ -6,7 +6,7 @@ test.describe("Logout Tests", () => {
     await loginPage.login(users.standard.username, users.standard.password);
   });
 
-  test("User can logout successfully", async ({ productsPage, loginPage }) => {
+  test("redirect to login page after succesful logout", async ({ productsPage, loginPage }) => {
     await productsPage.header.logout();
 
     await loginPage.loginLogo.expectToContainText("Swag Labs");
