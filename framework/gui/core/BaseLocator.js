@@ -34,7 +34,8 @@ class BaseLocator {
 
   async expectToHaveText(text) {
     this._log(`Expecting to have Text: ${text}`);
-    await expect(this._locator).toHaveText(text);
+    const normalizedText = text.toString();
+    await expect(this._locator).toHaveText(normalizedText);
   }
 
   async allTextContents() {
