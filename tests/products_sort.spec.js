@@ -17,44 +17,44 @@ test.describe("Sort Products", () => {
   test("display products sorted A to Z when selecting 'Name (A to Z)' from sort dropdown", async ({
     productsPage,
   }) => {
-    await productsPage.selectSort(sortOptions.nameAsc);
+    await productsPage.selectSort(sortOptions.nameAsc.value);
     expectSortedAsc(await productsPage.getProductNames());
   });
 
   test("display products sorted Z to A when selecting 'Name (Z to A)' from sort dropdown", async ({
     productsPage,
   }) => {
-    await productsPage.selectSort(sortOptions.nameDesc);
+    await productsPage.selectSort(sortOptions.nameDesc.value);
     expectSortedDesc(await productsPage.getProductNames());
   });
 
   test("display products sorted low to high when selecting 'Price (low to high)' from sort dropdown", async ({
     productsPage,
   }) => {
-    await productsPage.selectSort(sortOptions.priceAsc);
+    await productsPage.selectSort(sortOptions.priceAsc.value);
     expectSortedNumericAsc(await productsPage.getProductPrices());
   });
 
   test("display products sorted high to low when selecting 'Price (high to low)' from sort dropdown", async ({
     productsPage,
   }) => {
-    await productsPage.selectSort(sortOptions.priceDesc);
+    await productsPage.selectSort(sortOptions.priceDesc.value);
     expectSortedNumericDesc(await productsPage.getProductPrices());
   });
 
   test("display products in correct sort order after multiple changes", async ({
     productsPage,
   }) => {
-    await productsPage.selectSort(sortOptions.nameAsc);
+    await productsPage.selectSort(sortOptions.nameAsc.value);
     expectSortedAsc(await productsPage.getProductNames());
 
-    await productsPage.selectSort(sortOptions.nameDesc);
+    await productsPage.selectSort(sortOptions.nameDesc.value);
     expectSortedDesc(await productsPage.getProductNames());
 
-    await productsPage.selectSort(sortOptions.priceAsc);
+    await productsPage.selectSort(sortOptions.priceAsc.value);
     expectSortedNumericAsc(await productsPage.getProductPrices());
 
-    await productsPage.selectSort(sortOptions.priceDesc);
+    await productsPage.selectSort(sortOptions.priceDesc.value);
     expectSortedNumericDesc(await productsPage.getProductPrices());
   });
 
@@ -65,7 +65,7 @@ test.describe("Sort Products", () => {
     });
   
     test("reset to default A to Z option after page reload", async ({ productsPage }) => {
-      await productsPage.selectSort(sortOptions.nameDesc);
+      await productsPage.selectSort(sortOptions.nameDesc.value);
       expectSortedDesc(await productsPage.getProductNames());
   
       await productsPage.page.reload();
@@ -76,7 +76,7 @@ test.describe("Sort Products", () => {
       productsPage,
       cartPage,
     }) => {
-      await productsPage.selectSort(sortOptions.nameDesc);
+      await productsPage.selectSort(sortOptions.nameDesc.value);
       expectSortedDesc(await productsPage.getProductNames());
   
       await cartPage.open();
@@ -90,7 +90,7 @@ test.describe("Sort Products", () => {
     }) => {
   
       for (const option of Object.values(sortOptions)) {
-        await productsPage.selectSort(option);
+        await productsPage.selectSort(option.value);
         await productsPage.activeSortOption.expectToHaveText(option.label);
       }
     });
@@ -101,7 +101,7 @@ test.describe("Sort Products", () => {
       const productNames = await productsPage.getProductNames();
   
       for (const option of Object.values(sortOptions)) {
-        await productsPage.selectSort(option);
+        await productsPage.selectSort(option.value);
         expectSameMembers(productNames, await productsPage.getProductNames());
       }
     });

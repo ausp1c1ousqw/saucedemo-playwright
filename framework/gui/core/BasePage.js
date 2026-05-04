@@ -6,9 +6,9 @@ class BasePage {
     this.pageURL = pageURL;
   }
 
-  async open() {
+  async open(pageURL = this.pageURL) {
     logger.info(`Navigating to ${this.pageURL}`);
-    await this.page.goto(this.pageURL);
+    await this.page.goto(pageURL);
   }
 
   async refresh() {

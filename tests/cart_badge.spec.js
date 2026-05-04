@@ -1,7 +1,7 @@
 import { test } from "../test-setup/test-setup.js";
 import { users } from "../test-data";
 
-test.describe.only("Cart Badge", () => {
+test.describe("Cart Badge", () => {
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.open();
     await loginPage.login(users.standard.username, users.standard.password);

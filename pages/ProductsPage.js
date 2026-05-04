@@ -10,8 +10,8 @@ class ProductsPage extends BasePage {
       productPrice: this.page.getByTestId("inventory-item-price"),
       sortDropdown: this.page.getByTestId("product-sort-container"),
       activeSortOption: this.page.getByTestId("active-option"),
-      addToCartButton: (productId) => this.page.getByTestId(`add-to-cart-${productId}`),
-      removeButton: (productId) => this.page.getByTestId(`remove-${productId}`),
+      addToCartButton: (testId) => this.page.getByTestId(`add-to-cart-${testId}`),
+      removeButton: (testId) => this.page.getByTestId(`remove-${testId}`),
     };
     this.header = new Header(page);
   }
@@ -36,19 +36,19 @@ class ProductsPage extends BasePage {
     return new Label(this.locators.activeSortOption, "Active Sort Option");
   }
 
-  getAddToCartButtonFor(productId) {
+  getAddToCartButtonFor(testId) {
     return new Button(
-      this.locators.addToCartButton(productId),
-      `Add To Cart Button on ${productId}`,
+      this.locators.addToCartButton(testId),
+      `Add To Cart Button on ${testId}`,
     );
   }
 
-  getRemoveButtonFor(productId) {
-    return new Button(this.locators.removeButton(productId), `Remove Button on ${productId}`);
+  getRemoveButtonFor(testId) {
+    return new Button(this.locators.removeButton(testId), `Remove Button on ${testId}`);
   }
 
   async selectSort(sortOption) {
-    await this.sortDropdown.selectOption(sortOption?.value ?? sortOption);
+    await this.sortDropdown.selectOption(sortOption);
   }
 
   async getProductNames() {
@@ -60,12 +60,12 @@ class ProductsPage extends BasePage {
     return prices.map((p) => parseFloat(p.replace(/[^0-9.]/g, "")));
   }
 
-  async clickAddToCartButtonFor(productId) {
-    await this.getAddToCartButtonFor(productId).click();
+  async clickAddToCartButtonFor(testId) {
+    await this.getAddToCartButtonFor(testId).click();
   }
 
-  async clickRemoveButtonFor(productId) {
-    await this.getRemoveButtonFor(productId).click();
+  async clickRemoveButtonFor(testId) {
+    await this.getRemoveButtonFor(testId).click();
   }
 }
 export default ProductsPage;

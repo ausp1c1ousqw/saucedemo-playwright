@@ -11,6 +11,13 @@ test.describe("Login", () => {
     await productsPage.pageTitle.expectToContainText("Products");
   });
 
+  test("hide password input characters in password field", async ({ loginPage }) => {
+    await loginPage.enterPassword(generators.randomPassword());
+
+    await loginPage.passwordField.expectToHaveAttribute("type", "password");
+  });
+
+test.describe("Error messages", () => {
   test("display invalid credentials error for incorrect password", async ({ loginPage }) => {
     await loginPage.login(users.standard.username, generators.randomPassword());
 
@@ -34,10 +41,6 @@ test.describe("Login", () => {
 
     await loginPage.loginError.expectToContainText(loginErrors.lockedUser);
   });
-
-  test("hide password input characters in password field", async ({ loginPage }) => {
-    await loginPage.enterPassword(generators.randomPassword());
-
-    await loginPage.passwordField.expectToHaveAttribute("type", "password");
-  });
+});
+  
 });
