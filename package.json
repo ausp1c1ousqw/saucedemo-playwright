@@ -1,27 +1,26 @@
 {
-  "name": "playwright-course",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "npx playwright test",
-    "report": "npx playwright show-report"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0",
-    "allure-commandline": "^2.38.0",
-    "allure-playwright": "^3.6.0"
-  },
-  "dependencies": {
-    "@faker-js/faker": "^10.3.0",
-    "chai": "^6.2.2",
-    "dotenv": "^17.3.1",
-    "faker-js": "^1.0.0",
-    "winston": "^3.19.0"
-  }
+	"name": "saucedemo-playwright",
+	"version": "1.0.0",
+	"description": "Playwright UI tests for saucedemo.com (Page Object Model, CI-ready reports).",
+	"main": "index.js",
+	"scripts": {
+		"test": "npx playwright test",
+		"report": "npx playwright show-report",
+		"test:debug": "npx playwright test --debug",
+		"test:headed": "npx playwright test --headed",
+		"test:ui": "npx playwright test --ui"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"devDependencies": {
+		"@playwright/test": "^1.58.2",
+		"@types/node": "^25.5.0"
+	},
+	"dependencies": {
+		"@faker-js/faker": "^10.3.0",
+		"dotenv": "^17.3.1",
+		"winston": "^3.19.0"
+	}
 }

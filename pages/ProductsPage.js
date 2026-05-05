@@ -25,11 +25,11 @@ class ProductsPage extends BasePage {
   }
 
   get productName() {
-    return new BaseLocator(this.locators.productName, "Cart Product Name", "Locator");
+    return new BaseLocator(this.locators.productName, "Product Name", "Locator");
   }
 
   get productPrice() {
-    return new BaseLocator(this.locators.productPrice, "Cart Product Price", "Locator");
+    return new BaseLocator(this.locators.productPrice, "Product Price", "Locator");
   }
 
   get activeSortOption() {
@@ -54,7 +54,7 @@ class ProductsPage extends BasePage {
   async getProductNames() {
     return await this.productName.allTextContents();
   }
-
+  
   async getProductPrices() {
     const prices = await this.productPrice.allTextContents();
     return prices.map((p) => parseFloat(p.replace(/[^0-9.]/g, "")));

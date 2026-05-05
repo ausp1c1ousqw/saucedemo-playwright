@@ -1,4 +1,4 @@
-import { assertWithLog } from "./assertWithLog.js";
+import { assertWithLog } from "../framework/gui";
 
 export function expectSortedAsc(actual, message = "Comparing actual list with ascending-sorted: ") {
   const expected = [...actual].sort((a, b) => a.localeCompare(b));

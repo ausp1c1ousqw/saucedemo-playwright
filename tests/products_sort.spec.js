@@ -6,7 +6,7 @@ import {
   expectSortedNumericAsc,
   expectSortedNumericDesc,
   expectSameMembers,
-} from "../utils/sortExpectations.js";
+} from "../test-utils/sortExpectations.js";
 
 test.describe("Sort Products", () => {
   test.beforeEach(async ({ loginPage }) => {

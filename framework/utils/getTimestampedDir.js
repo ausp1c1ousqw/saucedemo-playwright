@@ -1,7 +1,8 @@
 import path from "path";
 import { ensureDirExists } from "./ensureDirExists.js";
 
-export function getDailyDebugDir(debugDir) {
+
+export function getTimestampedDir(parentFolder) {
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
@@ -12,6 +13,6 @@ export function getDailyDebugDir(debugDir) {
   const seconds = String(now.getSeconds()).padStart(2, "0");
 
   const folderName = `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
-  const dailyDebugDir = path.join(debugDir, folderName);
-  return ensureDirExists(dailyDebugDir);
+  const dir = path.join(parentFolder, folderName);
+  return ensureDirExists(dir);
 }

@@ -5,6 +5,7 @@ const logLevel = process.env.LOG_LEVEL ?? "info";
 const logToConsole = (process.env.LOG_TO_CONSOLE ?? "true") === "true";
 const logToFile = (process.env.LOG_TO_FILE ?? "true") === "true";
 
+
 const logDir = ensureDirExists(`${process.env.DEBUG_DIR}/logs`);
 
 const timestampFormat = "YYYY-MM-DD HH:mm:ss.SSS";

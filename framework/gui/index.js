@@ -6,3 +6,4 @@ export { default as Link } from "./core/elements/Link.js";
 export { default as Dropdown } from "./core/elements/Dropdown.js";
 export { default as BasePage } from "./core/BasePage.js";
 export { default as BaseLocator } from "./core/BaseLocator.js";
+export { assertWithLog } from "./utils/assertWithLog.js";

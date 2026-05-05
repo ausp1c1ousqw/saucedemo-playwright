@@ -7,8 +7,13 @@ class CartPage extends BasePage {
     this.locators = {
       cartProduct: this.page.getByTestId("inventory-item"),
       removeButton: (productId) => this.page.getByTestId(`remove-${productId}`),
+      checkoutButton: this.page.getByTestId("checkout"),
     };
     this.header = new Header(page);
+  }
+
+  get checkoutButton() {
+    return new Button(this.locators.checkoutButton, "Checkout Button");
   }
 
   getRemoveButtonFor(productId) {
@@ -17,6 +22,10 @@ class CartPage extends BasePage {
 
   get cartProduct() {
     return new BaseLocator(this.locators.cartProduct, "Cart Product", "Locator");
+  }
+  
+  async clickCheckoutButton() {
+    await this.checkoutButton.click();
   }
 
   async clickRemoveButtonFor(productId) {

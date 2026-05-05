@@ -1,5 +1,5 @@
-import { logger } from "../framework/logger";
-import { expect } from "allure-playwright";
+import { logger } from "../../logger";
+import { expect } from "@playwright/test";
 
 export function assertWithLog(actual, expected, message) {
   const fullMessage = `${message}
