@@ -30,7 +30,6 @@ jobs:
         env:
           # Your config also loads .env.local; these are here as CI-safe defaults.
           BASE_URL: https://www.saucedemo.com/
-          DEBUG_DIR: ./artifacts
         run: npm test
 
       - name: Upload Playwright report
