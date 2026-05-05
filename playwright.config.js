@@ -8,7 +8,7 @@ export default defineConfig({
   outputDir: `${process.env.DEBUG_DIR}/test-results`,
   fullyParallel: true,
   retries: 1,
-  workers: 2,
+  workers: 1,
 
   reporter: [["html", { outputFolder: `${process.env.DEBUG_DIR}/playwright-report` }]],
 
