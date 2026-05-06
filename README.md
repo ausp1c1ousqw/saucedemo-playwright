@@ -1,41 +1,87 @@
-# saucedemo-playwright
+## saucedemo-playwright
 
-Playwright UI tests for `https://www.saucedemo.com/`.
+UI tests for **Sauce Demo** (`https://www.saucedemo.com/`) using **Playwright** and a **Page Object Model** structure. Includes CI-ready HTML reporting.
 
-## Requirements
+## Tech stack
 
-- Node.js 20+
+- **JavaScript (ES modules)** + **Playwright Test**
+- **dotenv** (local env), **winston** (logging)
+- **Playwright HTML report** + artifacts (screenshots/traces)
 
-## Install
+## Quick start
+
+### Requirements
+
+- **Node.js**: 20+
+- **Package manager**: npm
+
+### Install
 
 ```bash
 npm ci
 npx playwright install
 ```
 
-## Run tests
+### Run
 
 ```bash
 npm test
 ```
 
-Useful commands:
+### CI run
 
 ```bash
-npm run test:headed
-npm run test:ui
+npm run test:ci
+```
+
+### Debug
+
+```bash
 npm run test:debug
+```
+
+### Open HTML report
+
+```bash
 npm run report
 ```
 
+## Structure
+
+- **`tests/`**: specs
+- **`pages/`**: Page Objects
+- **`test-setup/`**: shared hooks (extended `test`)
+- **`test-data/`**: users + fixtures
+- **`playwright.config.js`**: local (loads `.env.local`, writes under `DEBUG_DIR`)
+- **`playwright.config.ci.js`**: CI (writes to `playwright-report/`, `test-results/`)
+
 ## Environment variables
 
-- **`BASE_URL`**: target URL (default in CI is `https://www.saucedemo.com/`)
-- **`DEBUG_DIR`**: output folder for run artifacts (if not set locally, a timestamped folder under `./artifacts/` is created)
+Local overrides go in **`.env.local`**.
 
-Local overrides can be placed in **`.env.local`** (ignored by git).
+- **`BASE_URL`**: target URL
+- **`DEBUG_DIR`**: local artifacts/report folder (auto-created under `./artifacts/` if not set)
+- **`LOG_LEVEL`**, **`LOG_TO_CONSOLE`**, **`LOG_TO_FILE`**: logging controls
 
-## CI
+## Reporting
 
-GitHub Actions workflow runs on pushes to `main` and on pull requests and uploads the Playwright HTML report as an artifact.
+- **HTML report**:
+  - Local: `${DEBUG_DIR}/playwright-report`
+  - CI: `./playwright-report`
 
+## CI/CD
+
+- **GitHub Actions (included)**: runs on push/PR, uploads artifacts, and publishes the HTML report to GitHub Pages.
+
+## Example test
+
+```js
+import { test } from "../test-setup/test-setup.js";
+import { users } from "../test-data";
+
+test("login redirects to Products", async ({ loginPage, productsPage }) => {
+	await loginPage.open();
+	await loginPage.login(users.standard.username, users.standard.password);
+	await productsPage.pageTitle.expectToContainText("Products");
+});
+```
