@@ -1,6 +1,6 @@
 ## saucedemo-playwright
 
-UI tests for **Sauce Demo** (`https://www.saucedemo.com/`) using **Playwright** and a **Page Object Model** structure. Includes CI-ready HTML reporting.
+UI tests for **Sauce Demo** (`https://www.saucedemo.com/`) using **Playwright** and a **Page Object Model** structure. Includes CI-ready HTML reporting. Last report: https://ausp1c1ousqw.github.io/saucedemo-playwright/
 
 ## Tech stack
 
