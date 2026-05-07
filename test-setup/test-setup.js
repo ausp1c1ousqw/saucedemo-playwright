@@ -9,40 +9,40 @@ import CheckoutCompletePage from "../pages/CheckoutCompletePage";
 import { afterEachHook, beforeEachHook } from "./hooks";
 
 export const test = base.extend({
-  loginPage: async ({ page }, use) => {
-    const loginPage = new LoginPage(page);
-    await use(loginPage);
-  },
+	loginPage: async ({ page }, use) => {
+		const loginPage = new LoginPage(page);
+		await use(loginPage);
+	},
 
-  productsPage: async ({ page }, use) => {
-    const productsPage = new ProductsPage(page);
-    await use(productsPage);
-  },
+	productsPage: async ({ page }, use) => {
+		const productsPage = new ProductsPage(page);
+		await use(productsPage);
+	},
 
-  cartPage: async ({ page }, use) => {
-    const cartPage = new CartPage(page);
-    await use(cartPage);
-  },
+	cartPage: async ({ page }, use) => {
+		const cartPage = new CartPage(page);
+		await use(cartPage);
+	},
 
-  productDetailsPage: async ({ page }, use) => {
-    const productDetailsPage = new ProductDetailsPage(page);
-    await use(productDetailsPage);
-  },
+	productDetailsPage: async ({ page }, use) => {
+		const productDetailsPage = new ProductDetailsPage(page);
+		await use(productDetailsPage);
+	},
 
-  checkoutYourInfoPage: async ({ page }, use) => {
-    const checkoutYourInfoPage = new CheckoutYourInfoPage(page);
-    await use(checkoutYourInfoPage);
-  },
+	checkoutYourInfoPage: async ({ page }, use) => {
+		const checkoutYourInfoPage = new CheckoutYourInfoPage(page);
+		await use(checkoutYourInfoPage);
+	},
 
-  checkoutOverviewPage: async ({ page }, use) => {
-    const checkoutOverviewPage = new CheckoutOverviewPage(page);
-    await use(checkoutOverviewPage);
-  },
+	checkoutOverviewPage: async ({ page }, use) => {
+		const checkoutOverviewPage = new CheckoutOverviewPage(page);
+		await use(checkoutOverviewPage);
+	},
 
-  checkoutCompletePage: async ({ page }, use) => {
-    const checkoutCompletePage = new CheckoutCompletePage(page);
-    await use(checkoutCompletePage);
-  },
+	checkoutCompletePage: async ({ page }, use) => {
+		const checkoutCompletePage = new CheckoutCompletePage(page);
+		await use(checkoutCompletePage);
+	},
 });
 
 test.beforeEach(beforeEachHook);

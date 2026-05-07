@@ -1,30 +1,30 @@
 import { logger } from "../../logger";
 
 class BasePage {
-  constructor(page, pageURL) {
-    this.page = page;
-    this.pageURL = pageURL;
-  }
+	constructor(page, pageURL) {
+		this.page = page;
+		this.pageURL = pageURL;
+	}
 
-  async open(pageURL = this.pageURL) {
-    logger.info(`Navigating to ${this.pageURL}`);
-    await this.page.goto(pageURL);
-  }
+	async open(pageURL = this.pageURL) {
+		logger.info(`Navigating to ${this.pageURL}`);
+		await this.page.goto(pageURL);
+	}
 
-  async refresh() {
-    logger.info(`Refreshing page`);
-    await this.page.reload();
-  }
+	async refresh() {
+		logger.info(`Refreshing page`);
+		await this.page.reload();
+	}
 
-  async back() {
-    logger.info(`Clicking back`);
-    await this.page.goBack();
-  }
+	async back() {
+		logger.info(`Clicking back`);
+		await this.page.goBack();
+	}
 
-  async forward() {
-    logger.info(`Clicking forward`);
-    await this.page.goForward();
-  }
+	async forward() {
+		logger.info(`Clicking forward`);
+		await this.page.goForward();
+	}
 }
 
 export default BasePage;
